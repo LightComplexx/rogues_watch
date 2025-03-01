@@ -72,14 +72,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\lib;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\lib;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;$(IncludePath)</IncludePath>
