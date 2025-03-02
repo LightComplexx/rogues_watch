@@ -5,6 +5,7 @@
 // Engine includes.
 #include "GameManager.h"
 #include "ResourceManager.h"
+#include "DisplayManager.h"
 #include "LogManager.h"
 #include "Player.h"
 
@@ -14,15 +15,13 @@ void populateWorld();
 int main(int argc, char* argv[]) {
 
     // Start up game manager.
-    df::GameManager& game_manager = df::GameManager::getInstance();
-    if (game_manager.startUp()) {
-        df::LogManager& log_manager = df::LogManager::getInstance();
-        log_manager.writeLog("Error starting game manager!");
-        game_manager.shutDown();
+    if (GM.startUp()) {
+        LM.writeLog("Error starting game manager!");
+        GM.shutDown();
         return 0;
     }
 
-    // Testing
+    LM.setFlush(true);
 
     // Show splash screen.
     df::splash();

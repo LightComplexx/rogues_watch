@@ -3,6 +3,7 @@
 #include "WorldManager.h"
 #include "ResourceManager.h"
 #include "GameManager.h"
+#include "Reticle.h"
 
 Player::Player() {
 	// Set type
@@ -19,6 +20,8 @@ Player::Player() {
 	registerInterest(df::KEYBOARD_EVENT);
 	registerInterest(df::MSE_EVENT);
 	registerInterest(df::STEP_EVENT);
+
+	new Reticle;
 }
 
 int Player::eventHandler(const df::Event* p_e) {

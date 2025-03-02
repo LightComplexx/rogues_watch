@@ -156,15 +156,17 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Reticle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameStart.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Reticle.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="sprites\player-spr.txt" />
-    <Text Include="sprites\saucer-spr.txt" />
+    <Text Include="x64\Debug\sprites\player-spr.txt" />
+    <Text Include="x64\Debug\sprites\saucer-spr.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
