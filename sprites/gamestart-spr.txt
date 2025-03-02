@@ -1,0 +1,32 @@
+<HEADER>
+frames 2
+width 70
+height 9
+color yellow
+slowdown 15
+</HEADER>
+<BODY>
+        ___                    _        _      __     __      __      
+       / _ \___  ___ ___ _____( )___   | | /| / /__ _/ /_____/ /      
+      / , _/ _ \/ _ `/ // / -_)/(_-<   | |/ |/ / _ `/ __/ __/ _ \     
+     /_/|_|\___/\_, /\_,_/\__/ /___/   |__/|__/\_,_/\__/\__/_//_/     
+               /___/                                                  
+                                                                      
+     Controls: 'w'/'s' moves, Mouse fires, Space nukes, 'q' quits     
+                                                                      
+                    Press 'p' to play, 'q' to quit                    
+end
+        ___                    _        _      __     __      __      
+       / _ \___  ___ ___ _____( )___   | | /| / /__ _/ /_____/ /      
+      / , _/ _ \/ _ `/ // / -_)/(_-<   | |/ |/ / _ `/ __/ __/ _ \     
+     /_/|_|\___/\_, /\_,_/\__/ /___/   |__/|__/\_,_/\__/\__/_//_/     
+               /___/                                                  
+                                                                      
+     Controls: 'w'/'s' moves, Mouse fires, Space nukes, 'q' quits     
+                                                                      
+                                                                      
+end
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

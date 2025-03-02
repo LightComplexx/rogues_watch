@@ -5,15 +5,15 @@
 // Engine includes.
 #include "GameManager.h"
 #include "ResourceManager.h"
-#include "DisplayManager.h"
 #include "LogManager.h"
-#include "Player.h"
+
+// Game includes
+#include "GameStart.h"
 
 void loadResources();
 void populateWorld();
 
 int main(int argc, char* argv[]) {
-
     // Start up game manager.
     if (GM.startUp()) {
         LM.writeLog("Error starting game manager!");
@@ -37,12 +37,14 @@ int main(int argc, char* argv[]) {
 
     // Shut everything down
     GM.shutDown();
+    return 0;
 }
 
 void loadResources() {
     RM.loadSprite("sprites/player-spr.txt", "player");
+    RM.loadSprite("sprites/gamestart-spr.txt", "gamestart");
 }
 
 void populateWorld() {
-    new Player;
+    new GameStart();
 }
