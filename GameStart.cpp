@@ -54,6 +54,8 @@ int GameStart::eventHandler(const df::Event* p_e) {
 
 // Count down to end of "message"
 void GameStart::start() {
+
+
 	// Spawn player archer
 	new Player;
 

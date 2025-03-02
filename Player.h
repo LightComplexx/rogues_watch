@@ -14,8 +14,11 @@ class Player : public df::Object {
 		void mse(const df::EventMouse* p_mouse_event);
 		void step();
 		void move(int dy);
+		void fire(df::Vector target);
 		int move_countdown;
 		int move_slowdown;
+		int fire_slowdown;
+		int fire_countdown;
 		Reticle* p_reticle;
 
 	public:
