@@ -42,6 +42,7 @@ int main(int argc, char* argv[]) {
 
 void loadResources() {
     RM.loadSprite("sprites/player-spr.txt", "player");
+    RM.loadSprite("sprites/tower-spr.txt", "tower");
     RM.loadSprite("sprites/gamestart-spr.txt", "gamestart");
 }
 
