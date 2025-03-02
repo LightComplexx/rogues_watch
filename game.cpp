@@ -4,7 +4,12 @@
 
 // Engine includes.
 #include "GameManager.h"
+#include "ResourceManager.h"
 #include "LogManager.h"
+#include "Player.h"
+
+void loadResources();
+void populateWorld();
 
 int main(int argc, char* argv[]) {
 
@@ -22,6 +27,23 @@ int main(int argc, char* argv[]) {
     // Show splash screen.
     df::splash();
 
-    // Shut everything down.
-    game_manager.shutDown();
+    // Load game resources.
+    loadResources();
+
+    // Populate game world with some objects.
+    populateWorld();
+
+    // Run the game
+    GM.run();
+
+    // Shut everything down
+    GM.shutDown();
+}
+
+void loadResources() {
+    RM.loadSprite("sprites/player-spr.txt", "player");
+}
+
+void populateWorld() {
+    new Player;
 }

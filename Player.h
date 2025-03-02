@@ -2,11 +2,14 @@
 #include "Object.h"
 #include "EventMouse.h"
 #include "EventKeyboard.h"
+#include "EventStep.h"
+
 class Player : public df::Object {
 	private:
 		// 
 		void kbd(const df::EventKeyboard* p_kbd_event);
 		void mse(const df::EventMouse* p_mouse_event);
+		void step(const df::EventStep* p_step_event);
 		void move(int dy);
 
 	public:
