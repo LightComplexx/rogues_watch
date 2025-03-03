@@ -12,6 +12,7 @@
 // Game includes
 #include "GameStart.h"
 #include "Player.h"
+#include "Tower.h"
 
 GameStart::GameStart() {
 	// Link to "gamestart" sprite
@@ -54,6 +55,9 @@ int GameStart::eventHandler(const df::Event* p_e) {
 
 // Count down to end of "message"
 void GameStart::start() {
+	// Spawn Tower
+	new Tower;
+
 	// Spawn player archer
 	new Player;
 
