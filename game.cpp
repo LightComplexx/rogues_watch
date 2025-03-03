@@ -45,6 +45,7 @@ void loadResources() {
     RM.loadSprite("sprites/tower-spr.txt", "tower");
     RM.loadSprite("sprites/gamestart-spr.txt", "gamestart");
     RM.loadSprite("sprites/bullet-spr.txt", "arrow");
+    RM.loadSprite("sprites/healthbar-spr.txt", "healthbar");
 }
 
 void populateWorld() {

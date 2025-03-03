@@ -9,16 +9,14 @@
 
 class Player : public df::Object {
 	private:
-		// 
-		void kbd(const df::EventKeyboard* p_kbd_event);
-		void mse(const df::EventMouse* p_mouse_event);
-		void step();
-		void move(int dy);
+		void kbd(const df::EventKeyboard* p_kbd_event); // keyboard events
+		void mse(const df::EventMouse* p_mouse_event); // mouse events
+		void step(); // step event
+		void aim(df::Vector init_position, df::Vector curr_position);
 		void fire(df::Vector target);
-		int move_countdown;
-		int move_slowdown;
 		int fire_slowdown;
 		int fire_countdown;
+		bool is_aiming;
 		Reticle* p_reticle;
 
 	public:

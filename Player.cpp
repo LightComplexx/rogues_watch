@@ -1,8 +1,12 @@
-#include "Player.h"
+// Engine includes
 #include "LogManager.h"
 #include "WorldManager.h"
 #include "ResourceManager.h"
 #include "GameManager.h"
+#include "DisplayManager.h"
+
+// Game includes
+#include "Player.h"
 #include "Reticle.h"
 #include "Projectile.h"
 
@@ -19,16 +23,15 @@ Player::Player() {
 	registerInterest(df::STEP_EVENT);
 
 	// Set starting location
-	df::Vector p(7, WM.getBoundary().getVertical() / 3);
+	df::Vector p(13, WM.getBoundary().getVertical() * 0.2f);
 	setPosition(p);
 
-
-	// Im not sure the player should be able to move?	
-	
 	// Intialize variables
-	// Sets the slowdown and countdown time for moving the Hero
-	move_slowdown = 2;
-	move_countdown = move_slowdown;
+	// Sets the slowdown and countdown time for firing arrows
+	fire_slowdown = 7;
+	fire_countdown = fire_slowdown;
+
+	is_aiming = false;
 
 	// Create reticle for firing bullets
 	p_reticle = new Reticle();
@@ -61,55 +64,38 @@ int Player::eventHandler(const df::Event* p_e) {
 
 void Player::kbd(const df::EventKeyboard* p_kbd_event) {
 	switch (p_kbd_event->getKey()) {
-		case df::Keyboard::Q:    // quit
-			if (p_kbd_event->getKeyboardAction() == df::KEY_PRESSED) {
-				GM.setGameOver();
-			}
-			break;
-
-		case df::Keyboard::W:    // up
-			if (p_kbd_event->getKeyboardAction() == df::KEY_DOWN)
-				move(-1);
-			break;
-
-		case df::Keyboard::S:    // down
-			if (p_kbd_event->getKeyboardAction() == df::KEY_DOWN)
-				move(+1);
-			break;
+	case df::Keyboard::Q:    // quit
+		if (p_kbd_event->getKeyboardAction() == df::KEY_PRESSED) {
+			GM.setGameOver();
+		}
+		break;
 	}
 }
 
 void Player::mse(const df::EventMouse* p_mouse_event) {
 	// Currently only for when mouse is immediately released
-	if ((p_mouse_event->getMouseAction() == df::CLICKED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
-		fire(p_mouse_event->getMousePosition());
+	if ((p_mouse_event->getMouseAction() == df::PRESSED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
+		// Create offset vector
+		//df::Vector offset(100, 100);
+
+		// Pass start and current position to aim function
+		aim(getPosition(), p_mouse_event->getMousePosition());
+
+		// Set is_aiming state to true
+		is_aiming = true;
+	}
+
+	if (is_aiming && (p_mouse_event->getMouseAction() != df::PRESSED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
+		is_aiming = false;
 	}
 }
 
 void Player::step() {
-	// Move countdown
-	move_countdown--;
-	if (move_countdown < 0) {
-		move_countdown = 0;
-	}
+	// Fire countdown
 	fire_countdown--;
 	if (fire_countdown < 0) {
 		fire_countdown = 0;
 	}
-}
-
-void Player::move(int dy)
-{
-	// See if time to move
-	if (move_countdown > 0)
-		return;
-	move_countdown = move_slowdown;
-
-	// If stays on window, allow move
-	df::Vector new_pos(getPosition().getX(), getPosition().getY() + dy);
-	if ((new_pos.getY() > 3) &&
-		(new_pos.getY() < WM.getBoundary().getVertical() - (getBox().getVertical() / 2)))
-		WM.moveObject(this, new_pos);
 }
 
 void Player::fire(df::Vector target) {
@@ -123,4 +109,19 @@ void Player::fire(df::Vector target) {
 	v.scale(1);
 	Projectile* p = new Projectile(getPosition());
 	p->setVelocity(v);
+}
+
+void Player::aim(df::Vector init_position, df::Vector curr_position) {
+	int Xscale = df::Config::getInstance().getWindowHorizontalPixels() / 10;
+	int Yscale = df::Config::getInstance().getWindowVerticalPixels() / 10;
+
+	sf::Vector2f start(init_position.getX(), init_position.getY() * Yscale);
+	sf::Vector2f curr(curr_position.getX() * Xscale, curr_position.getY() * Yscale);
+
+	sf::Vertex line[]{
+		{{start}, sf::Color::Red},
+		{{curr}, sf::Color::Red}
+	};
+		
+	DM.getWindow()->draw(line, 2, sf::PrimitiveType::Lines);
 }
