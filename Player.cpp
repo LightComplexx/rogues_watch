@@ -4,6 +4,7 @@
 #include "ResourceManager.h"
 #include "GameManager.h"
 #include "Reticle.h"
+#include "Projectile.h"
 
 Player::Player() {
 	// Set sprite
@@ -18,9 +19,12 @@ Player::Player() {
 	registerInterest(df::STEP_EVENT);
 
 	// Set starting location
-	df::Vector p(WM.getBoundary().getHorizontal() / 2, WM.getBoundary().getVertical() / 2);
+	df::Vector p(7, WM.getBoundary().getVertical() / 3);
 	setPosition(p);
 
+
+	// Im not sure the player should be able to move?	
+	
 	// Intialize variables
 	// Sets the slowdown and countdown time for moving the Hero
 	move_slowdown = 2;
@@ -76,16 +80,22 @@ void Player::kbd(const df::EventKeyboard* p_kbd_event) {
 }
 
 void Player::mse(const df::EventMouse* p_mouse_event) {
-	if ((p_mouse_event->getMouseAction() == df::PRESSED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
-
+	// Currently only for when mouse is immediately released
+	if ((p_mouse_event->getMouseAction() == df::CLICKED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
+		fire(p_mouse_event->getMousePosition());
 	}
 }
 
 void Player::step() {
 	// Move countdown
 	move_countdown--;
-	if (move_countdown < 0)
+	if (move_countdown < 0) {
 		move_countdown = 0;
+	}
+	fire_countdown--;
+	if (fire_countdown < 0) {
+		fire_countdown = 0;
+	}
 }
 
 void Player::move(int dy)
@@ -100,4 +110,17 @@ void Player::move(int dy)
 	if ((new_pos.getY() > 3) &&
 		(new_pos.getY() < WM.getBoundary().getVertical() - (getBox().getVertical() / 2)))
 		WM.moveObject(this, new_pos);
+}
+
+void Player::fire(df::Vector target) {
+	if (fire_countdown > 0) {
+		return;
+	}
+	fire_countdown = fire_slowdown;
+
+	df::Vector v = target - getPosition();
+	v.normalize();
+	v.scale(1);
+	Projectile* p = new Projectile(getPosition());
+	p->setVelocity(v);
 }
