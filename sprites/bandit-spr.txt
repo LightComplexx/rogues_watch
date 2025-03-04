@@ -1,0 +1,24 @@
+<HEADER>
+frames 2
+width 6
+height 5
+color red
+slowdown 8
+</HEADER>
+<BODY>
+  _O_ 
+ { | }
+  `|` 
+  / \ 
+_/ __\
+end
+  _O_ 
+ {.|.}
+   |  
+  / \ 
+_/ __\
+end
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>

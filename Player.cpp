@@ -80,7 +80,6 @@ void Player::mse(const df::EventMouse* p_mouse_event) {
 		df::Vector offset(10, -1);
 
 		// Set start and current position
-
 		start = getPosition() + offset;
 		curr = p_mouse_event->getMousePosition();
 
@@ -94,10 +93,10 @@ int Player::draw() {
 
 	if (is_aiming) {
 		aim(start, curr);
-	}
 
-	if (aim_time < 2) {
-		aim_time = aim_time + 0.05;
+		if (aim_time < 2) {
+			aim_time += 0.05f;
+		}
 	}
 	return 0;
 }
@@ -131,7 +130,7 @@ void Player::fire(df::Vector target) {
 
 	df::Vector v = target - getPosition();
 	v.normalize();
-	v.scale(1.0 * (1.0 + aim_time));
+	v.scale(1.0f * (1.0f + aim_time));
 	Projectile* p = new Projectile(getPosition(), aim_time);
 	p->setVelocity(v);
 }

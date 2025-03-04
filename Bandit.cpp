@@ -6,8 +6,8 @@ Bandit::Bandit() {
 	// Set speed in horizontal direction.
 	setVelocity(df::Vector(-0.25, 0));
 
-	// Setup sprite. currently using player sprite as template
-	setSprite("player");
+	// Setup sprite
+	setSprite("bandit");
 
 	// Move to start location
 	moveToStart();

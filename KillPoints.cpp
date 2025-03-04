@@ -21,7 +21,7 @@ KillPoints::KillPoints(int new_points, df::Vector pos) {
 	color = df::YELLOW;
 
 	// Move upward slightly after being created
-	setVelocity(df::Vector(0, -0.10));
+	setVelocity(df::Vector(0, -0.10f));
 
 	// Time the object lives for
 	lifetime = 0;

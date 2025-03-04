@@ -23,6 +23,8 @@ int Enemy::eventHandler(const df::Event* p_e) {
         hit(p_collision_event);
         return 1;
     }
+
+    return 0;
 }
 
 void Enemy::hit(const df::EventCollision* p_collision_event) {
