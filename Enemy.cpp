@@ -1,6 +1,6 @@
 #include "Enemy.h"
 #include "WorldManager.h"
-
+#include "KillPoints.h"
 Enemy::Enemy() {
     // All Enemies should have type enemy
     setType("Enemy");
@@ -14,7 +14,7 @@ Enemy::Enemy() {
 }
 
 Enemy::~Enemy() {
-
+    new KillPoints(points, getPosition());
 }
 
 int Enemy::eventHandler(const df::Event* p_e) {

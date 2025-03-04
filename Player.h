@@ -21,6 +21,7 @@ class Player : public df::Object {
 		bool mouse_pressed;
 		df::Vector start;
 		df::Vector curr;
+		float aim_time;
 		Reticle* p_reticle;
 
 	public:

@@ -28,7 +28,7 @@ Player::Player() {
 
 	// Intialize variables
 	// Sets the slowdown and countdown time for firing arrows
-	fire_slowdown = 7;
+	fire_slowdown = 2;
 	fire_countdown = fire_slowdown;
 
 	is_aiming = false;
@@ -96,6 +96,9 @@ int Player::draw() {
 		aim(start, curr);
 	}
 
+	if (aim_time < 2) {
+		aim_time = aim_time + 0.05;
+	}
 	return 0;
 }
 
@@ -104,6 +107,11 @@ void Player::step() {
 	fire_countdown--;
 	if (fire_countdown < 0) {
 		fire_countdown = 0;
+	}
+
+	if (!is_aiming && aim_time > 0.0) {
+		fire(p_reticle->getPosition());
+		aim_time = 0;
 	}
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
@@ -123,8 +131,8 @@ void Player::fire(df::Vector target) {
 
 	df::Vector v = target - getPosition();
 	v.normalize();
-	v.scale(1);
-	Projectile* p = new Projectile(getPosition());
+	v.scale(1.0 * (1.0 + aim_time));
+	Projectile* p = new Projectile(getPosition(), aim_time);
 	p->setVelocity(v);
 }
 

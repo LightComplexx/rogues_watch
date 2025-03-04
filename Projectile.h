@@ -9,6 +9,6 @@ class Projectile : public df::Object {
 		void hit(const df::EventCollision* p_collision_event);
 
 	public:
-		Projectile(df::Vector player_pos);
+		Projectile(df::Vector player_pos, float charge);
 		int eventHandler(const df::Event* p_e) override;
 };

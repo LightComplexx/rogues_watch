@@ -13,6 +13,7 @@
 #include "GameStart.h"
 #include "Player.h"
 #include "Tower.h"
+#include "Bandit.h"
 
 GameStart::GameStart() {
 	// Link to "gamestart" sprite
@@ -60,6 +61,11 @@ void GameStart::start() {
 
 	// Spawn player archer
 	new Player;
+
+	// Spawn a bandit
+	for (int i = 0; i < 6; i++) {
+		new Bandit;
+	}
 
 	// level_count display
 	df::ViewObject* p_vo = new df::ViewObject;
