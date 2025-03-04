@@ -14,9 +14,13 @@ class Player : public df::Object {
 		void step(); // step event
 		void aim(df::Vector init_position, df::Vector curr_position);
 		void fire(df::Vector target);
+		int draw() override;
 		int fire_slowdown;
 		int fire_countdown;
 		bool is_aiming;
+		bool mouse_pressed;
+		df::Vector start;
+		df::Vector curr;
 		Reticle* p_reticle;
 
 	public:

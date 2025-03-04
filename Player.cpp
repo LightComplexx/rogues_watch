@@ -32,6 +32,7 @@ Player::Player() {
 	fire_countdown = fire_slowdown;
 
 	is_aiming = false;
+	mouse_pressed = false;
 
 	// Create reticle for firing bullets
 	p_reticle = new Reticle();
@@ -76,18 +77,26 @@ void Player::mse(const df::EventMouse* p_mouse_event) {
 	// Currently only for when mouse is immediately released
 	if ((p_mouse_event->getMouseAction() == df::PRESSED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
 		// Create offset vector
-		//df::Vector offset(100, 100);
+		df::Vector offset(10, -1);
 
-		// Pass start and current position to aim function
-		aim(getPosition(), p_mouse_event->getMousePosition());
+		// Set start and current position
+
+		start = getPosition() + offset;
+		curr = p_mouse_event->getMousePosition();
 
 		// Set is_aiming state to true
 		is_aiming = true;
 	}
+}
 
-	if (is_aiming && (p_mouse_event->getMouseAction() != df::PRESSED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
-		is_aiming = false;
+int Player::draw() {
+	Object::draw();
+
+	if (is_aiming) {
+		aim(start, curr);
 	}
+
+	return 0;
 }
 
 void Player::step() {
@@ -95,6 +104,14 @@ void Player::step() {
 	fire_countdown--;
 	if (fire_countdown < 0) {
 		fire_countdown = 0;
+	}
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
+		mouse_pressed = true;
+	}
+	else if (mouse_pressed) {
+		mouse_pressed = false;
+		is_aiming = false;
 	}
 }
 
@@ -112,18 +129,16 @@ void Player::fire(df::Vector target) {
 }
 
 void Player::aim(df::Vector init_position, df::Vector curr_position) {
-	float char_width = (float) df::Config::getInstance().getWindowHorizontalPixels() / WM.getBoundary().getHorizontal();
-	float char_height = (float) df::Config::getInstance().getWindowVerticalPixels() / WM.getBoundary().getVertical();
+	float char_width = (float)df::Config::getInstance().getWindowHorizontalPixels() / WM.getBoundary().getHorizontal();
+	float char_height = (float)df::Config::getInstance().getWindowVerticalPixels() / WM.getBoundary().getVertical();
 
 	sf::Vector2f start(init_position.getX() * char_width, init_position.getY() * char_height);
 	sf::Vector2f curr(curr_position.getX() * char_width, curr_position.getY() * char_height);
-
-	//LM.writeLog("Horizontals: (%d - window pixels, %.3f window chars)", df::Config::getInstance().getWindowHorizontalPixels(), WM.getBoundary().getHorizontal());
 
 	sf::Vertex line[]{
 		{{start}, sf::Color::Red},
 		{{curr}, sf::Color::Red}
 	};
-		
+
 	DM.getWindow()->draw(line, 2, sf::PrimitiveType::Lines);
 }
