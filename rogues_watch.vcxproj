@@ -71,18 +71,18 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\lib;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\lib;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\lib;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\lib;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\lib;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\lib;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -155,18 +155,22 @@
   <ItemGroup>
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameStart.cpp" />
+    <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Reticle.cpp" />
+    <ClCompile Include="Tower.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bandit.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameStart.h" />
+    <ClInclude Include="HealthBar.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="Reticle.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="x64\Debug\sprites\player-spr.txt" />
-    <Text Include="x64\Debug\sprites\saucer-spr.txt" />
+    <ClInclude Include="Tower.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
