@@ -4,7 +4,7 @@
 #include "ResourceManager.h"
 #include "WorldManager.h"
 
-Projectile::Projectile(df::Vector player_pos) {
+Projectile::Projectile(df::Vector player_pos, float charge) {
 
 	// Projectile set to soft
 	setSolidness(df::SOFT);
@@ -18,7 +18,7 @@ Projectile::Projectile(df::Vector player_pos) {
 	setPosition(p);
 
 	// The direction is set when the player fires.
-	setSpeed(1);
+	setSpeed(1.0);
 
 	// Projectiles should be affected by gravity
 	df::Vector a(0, 0.05);

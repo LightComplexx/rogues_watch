@@ -17,8 +17,8 @@ class Enemy : public df::Object {
 		virtual int eventHandler(const df::Event* p_e) override;
 
 		// Setters/Getters for points
-		virtual void setPoints(int new_points);
-		virtual int getPoints();
+		void setPoints(int new_points);
+		int getPoints();
 		
 
 };

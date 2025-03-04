@@ -17,6 +17,7 @@ class Player : public df::Object {
 		int fire_slowdown;
 		int fire_countdown;
 		bool is_aiming;
+		float aim_time;
 		Reticle* p_reticle;
 
 	public:

@@ -28,7 +28,7 @@ Player::Player() {
 
 	// Intialize variables
 	// Sets the slowdown and countdown time for firing arrows
-	fire_slowdown = 7;
+	fire_slowdown = 2;
 	fire_countdown = fire_slowdown;
 
 	is_aiming = false;
@@ -73,6 +73,7 @@ void Player::kbd(const df::EventKeyboard* p_kbd_event) {
 }
 
 void Player::mse(const df::EventMouse* p_mouse_event) {
+	is_aiming = false;
 	// Currently only for when mouse is immediately released
 	if ((p_mouse_event->getMouseAction() == df::PRESSED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
 		// Create offset vector
@@ -83,10 +84,10 @@ void Player::mse(const df::EventMouse* p_mouse_event) {
 
 		// Set is_aiming state to true
 		is_aiming = true;
-	}
 
-	if (is_aiming && (p_mouse_event->getMouseAction() != df::PRESSED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
-		is_aiming = false;
+		if (aim_time < 2) {
+			aim_time = aim_time + 0.05;
+		}
 	}
 }
 
@@ -95,6 +96,11 @@ void Player::step() {
 	fire_countdown--;
 	if (fire_countdown < 0) {
 		fire_countdown = 0;
+	}
+
+	if (!is_aiming && aim_time > 0.0) {
+		fire(p_reticle->getPosition());
+		aim_time = 0;
 	}
 }
 
@@ -106,8 +112,8 @@ void Player::fire(df::Vector target) {
 
 	df::Vector v = target - getPosition();
 	v.normalize();
-	v.scale(1);
-	Projectile* p = new Projectile(getPosition());
+	v.scale(1.0 * (1.0 + aim_time));
+	Projectile* p = new Projectile(getPosition(), aim_time);
 	p->setVelocity(v);
 }
 

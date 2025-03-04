@@ -153,10 +153,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bandit.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameStart.cpp" />
     <ClCompile Include="HealthBar.cpp" />
+    <ClCompile Include="KillPoints.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Reticle.cpp" />
@@ -167,6 +169,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameStart.h" />
     <ClInclude Include="HealthBar.h" />
+    <ClInclude Include="KillPoints.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Reticle.h" />
