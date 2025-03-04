@@ -16,7 +16,7 @@ Tower::Tower() {
 	setType("Tower");
 
 	// Set visibility
-	setSolidness(df::SOFT);
+	//setSolidness(df::SOFT);
 
 	// Register event interests
 

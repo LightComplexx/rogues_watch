@@ -156,6 +156,7 @@
     <ClCompile Include="Bandit.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameStart.cpp" />
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="KillPoints.cpp" />
@@ -167,6 +168,7 @@
   <ItemGroup>
     <ClInclude Include="Bandit.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameStart.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="KillPoints.h" />

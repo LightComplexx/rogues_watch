@@ -26,5 +26,6 @@ class Player : public df::Object {
 
 	public:
 		Player();
+		~Player();
 		int eventHandler(const df::Event* p_e) override;
 };

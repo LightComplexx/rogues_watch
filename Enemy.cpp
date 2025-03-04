@@ -5,10 +5,6 @@ Enemy::Enemy() {
     // All Enemies should have type enemy
     setType("Enemy");
 
-    // All enemies should register interest for Collisions and Out events
-    registerInterest(df::COLLISION_EVENT);
-    registerInterest(df::OUT_EVENT);
-
     // Points is initialized to 10
     points = 10;
 }

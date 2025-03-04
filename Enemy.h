@@ -9,7 +9,7 @@ class Enemy : public df::Object {
 	private:
 		// The amount of points the enemy gives on death
 		int points;
-		virtual void hit(const df::EventCollision* p_collision_event);
+		void hit(const df::EventCollision* p_collision_event);
 
 	public:
 		Enemy();

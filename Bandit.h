@@ -5,7 +5,9 @@
 class Bandit : public Enemy {
 	private:
 		void moveToStart();
+		void hit(const df::EventCollision* p_collision_event);
+
 	public:
 		Bandit();
-		~Bandit();
+		virtual int eventHandler(const df::Event* p_e) override;
 };

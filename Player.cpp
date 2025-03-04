@@ -17,6 +17,9 @@ Player::Player() {
 	// Set type
 	setType("Player");
 
+	// Set visibility to soft so it doesn't affect tower
+	setSolidness(df::SOFT);
+
 	// Register event interests
 	registerInterest(df::KEYBOARD_EVENT);
 	registerInterest(df::MSE_EVENT);
@@ -27,6 +30,9 @@ Player::Player() {
 	setPosition(p);
 
 	// Intialize variables
+	// set aim_time to 0
+	aim_time = 0;
+
 	// Sets the slowdown and countdown time for firing arrows
 	fire_slowdown = 2;
 	fire_countdown = fire_slowdown;
@@ -37,6 +43,10 @@ Player::Player() {
 	// Create reticle for firing bullets
 	p_reticle = new Reticle();
 	p_reticle->draw();
+}
+
+Player::~Player() {
+	WM.markForDelete(p_reticle);
 }
 
 int Player::eventHandler(const df::Event* p_e) {

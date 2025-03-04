@@ -27,7 +27,7 @@ KillPoints::KillPoints(int new_points, df::Vector pos) {
 	lifetime = 0;
 	life_length = 5;
 
-	registerInterest(df::OUT_EVENT);
+	// register interest in step event
 	registerInterest(df::STEP_EVENT);
 }
 
