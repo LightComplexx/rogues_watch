@@ -112,11 +112,13 @@ void Player::fire(df::Vector target) {
 }
 
 void Player::aim(df::Vector init_position, df::Vector curr_position) {
-	int Xscale = df::Config::getInstance().getWindowHorizontalPixels() / 10;
-	int Yscale = df::Config::getInstance().getWindowVerticalPixels() / 10;
+	float char_width = (float) df::Config::getInstance().getWindowHorizontalPixels() / WM.getBoundary().getHorizontal();
+	float char_height = (float) df::Config::getInstance().getWindowVerticalPixels() / WM.getBoundary().getVertical();
 
-	sf::Vector2f start(init_position.getX(), init_position.getY() * Yscale);
-	sf::Vector2f curr(curr_position.getX() * Xscale, curr_position.getY() * Yscale);
+	sf::Vector2f start(init_position.getX() * char_width, init_position.getY() * char_height);
+	sf::Vector2f curr(curr_position.getX() * char_width, curr_position.getY() * char_height);
+
+	//LM.writeLog("Horizontals: (%d - window pixels, %.3f window chars)", df::Config::getInstance().getWindowHorizontalPixels(), WM.getBoundary().getHorizontal());
 
 	sf::Vertex line[]{
 		{{start}, sf::Color::Red},
