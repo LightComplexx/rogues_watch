@@ -31,9 +31,7 @@ GameOver::GameOver() {
 
 // When object exits, indicate game over.
 GameOver::~GameOver() {
-	//GM.setGameOver();
-
-	// Remove Saucers and ViewObjects, re-activate GameStart.
+	// Remove Enemies, Player, Tower and ViewObjects, re-activate GameStart.
 	df::ObjectList object_list = WM.getAllObjects(true);
 	df::ObjectListIterator i(&object_list);
 	for (i.first(); !i.isDone(); i.next()) {

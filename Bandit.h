@@ -9,5 +9,6 @@ class Bandit : public Enemy {
 
 	public:
 		Bandit();
+		~Bandit();
 		virtual int eventHandler(const df::Event* p_e) override;
 };

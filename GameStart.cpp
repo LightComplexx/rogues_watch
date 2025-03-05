@@ -11,9 +11,7 @@
 
 // Game includes
 #include "GameStart.h"
-#include "Player.h"
-#include "Tower.h"
-#include "Bandit.h"
+#include "Level.h"
 
 GameStart::GameStart() {
 	// Link to "gamestart" sprite
@@ -56,23 +54,8 @@ int GameStart::eventHandler(const df::Event* p_e) {
 
 // Count down to end of "message"
 void GameStart::start() {
-	// Spawn Tower
-	new Tower;
-
-	// Spawn player archer
-	new Player;
-
-	// Spawn a bandit
-	for (int i = 0; i < 6; i++) {
-		new Bandit;
-	}
-
-	// level_count display
-	df::ViewObject* p_vo = new df::ViewObject;
-	p_vo->setLocation(df::TOP_RIGHT);
-	p_vo->setViewString("Level");
-	p_vo->setValue(1);
-	p_vo->setColor(df::YELLOW);
+	// Spawn Level
+	new Level;
 
 	// When game starts, become inactive
 	setActive(false);

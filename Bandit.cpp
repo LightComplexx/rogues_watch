@@ -1,5 +1,9 @@
-#include "Bandit.h"
+// Engine includes
 #include "WorldManager.h"
+#include "EventView.h"
+
+// Game includes
+#include "Bandit.h"
 
 Bandit::Bandit() {
 
@@ -12,6 +16,12 @@ Bandit::Bandit() {
 	// Move to start location
 	moveToStart();
 
+}
+
+Bandit::~Bandit()
+{
+	df::EventView ev("Points", 10, true);
+	WM.onEvent(&ev);
 }
 
 int Bandit::eventHandler(const df::Event* p_e)
@@ -36,7 +46,6 @@ void Bandit::hit(const df::EventCollision* p_collision_event)
 	// All enemies should die on being hit by the projectile, projectile has piercing properties
 	if ((p_collision_event->getObject1()->getType() == "Arrow") ||
 		(p_collision_event->getObject2()->getType() == "Arrow")) {
-		new Bandit;
 		WM.markForDelete(this);
 	}
 }
