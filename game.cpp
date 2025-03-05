@@ -6,6 +6,7 @@
 #include "GameManager.h"
 #include "ResourceManager.h"
 #include "LogManager.h"
+#include "DisplayManager.h"
 
 // Game includes
 #include "GameStart.h"
@@ -22,7 +23,6 @@ int main(int argc, char* argv[]) {
     }
 
     LM.setFlush(true);
-
     // Show splash screen.
     df::splash();
 
@@ -48,6 +48,11 @@ void loadResources() {
     RM.loadSprite("sprites/arrow-spr.txt", "arrow");
     RM.loadSprite("sprites/healthbar-spr.txt", "healthbar");
     RM.loadSprite("sprites/bandit-spr.txt", "bandit");
+    RM.loadSprite("sprites/bird-spr.txt", "bird");
+    RM.loadSound("sounds/Bow.wav", "fire");
+    RM.loadSound("sounds/EnemyKill.wav", "die");
+    RM.loadSound("sounds/NextLevel.wav", "levelup");
+    RM.loadSound("sounds/TowerExplode.wav", "gameover");
 }
 
 void populateWorld() {

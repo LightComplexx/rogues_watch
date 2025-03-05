@@ -29,7 +29,7 @@ Tower::Tower() {
 	tower_hp = max_hp;
 
 	// Set healthbar location
-	df::Vector bar_p(WM.getBoundary().getVertical() * 0.5f, WM.getBoundary().getVertical() / 2);
+	df::Vector bar_p(WM.getBoundary().getVertical() * 0.5f, 1.0f);
 
 	p_bar = new HealthBar(bar_p);
 	p_bar->draw();

@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bandit.cpp" />
+    <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EventLevelComplete.cpp" />
     <ClCompile Include="game.cpp" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bandit.h" />
+    <ClInclude Include="Bird.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EventLevelComplete.h" />
     <ClInclude Include="GameOver.h" />

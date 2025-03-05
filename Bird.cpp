@@ -1,41 +1,70 @@
 // Engine includes
 #include "WorldManager.h"
 #include "EventView.h"
+#include "EventStep.h"
 
 // Game includes
-#include "Bandit.h"
+#include "Bird.h"
 
-Bandit::Bandit() {
+Bird::Bird() {
 
 	// Set speed in horizontal direction.
-	setVelocity(df::Vector(-0.25, 0));
+	setVelocity(df::Vector(-0.3, 0));
 
 	// Setup sprite
-	setSprite("bandit");
+	setSprite("bird");
 
 	// Move to start location
 	moveToStart();
 
+	direction_countdown = 0;
+	direction_slowdown = 5;
 }
 
-Bandit::~Bandit()
+Bird::~Bird()
 {
 	df::EventView ev("Points", getPoints(), true);
 	WM.onEvent(&ev);
 }
 
-int Bandit::eventHandler(const df::Event* p_e)
+int Bird::eventHandler(const df::Event* p_e)
 {
 	if (p_e->getType() == df::COLLISION_EVENT) {
 		const df::EventCollision* p_collision_event = dynamic_cast <df::EventCollision const*> (p_e);
 		hit(p_collision_event);
 		return 1;
 	}
+	if (p_e->getType() == df::STEP_EVENT) {
+		step();
+		return 1;
+	}
 
 	return 0;
 }
 
-void Bandit::hit(const df::EventCollision* p_collision_event)
+void Bird::step() {
+
+	direction_countdown++;
+	if (direction_countdown >= direction_slowdown) {
+		if (getVelocity().getY() != 0.0) {
+			setVelocity(df::Vector(-0.3, 0));
+			direction_countdown = 0;
+		}
+		else {
+			float up_or_down = 0;
+			if (rand() % 2 == 0) {
+				float up_or_down = 0.25;
+			}
+			else {
+				float up_or_down = -0.25;
+			}
+			setVelocity(df::Vector(-0.3, up_or_down));
+			direction_countdown = 0;
+		}
+	}
+}
+
+void Bird::hit(const df::EventCollision* p_collision_event)
 {
 	// All enemies should ignore other enemy types
 	if ((p_collision_event->getObject1()->getType() == "Enemy") &&
@@ -53,7 +82,7 @@ void Bandit::hit(const df::EventCollision* p_collision_event)
 	}
 }
 
-void Bandit::moveToStart() {
+void Bird::moveToStart() {
 	df::Vector temp_pos;
 
 	// Get world boundaries.
@@ -61,10 +90,10 @@ void Bandit::moveToStart() {
 	int world_vert = (int)WM.getBoundary().getVertical();
 
 	// x is off right side of window.
-	temp_pos.setX(world_horiz + rand() % (int)(world_horiz + 10.0f));
+	temp_pos.setX(world_horiz + rand() % (int)(world_horiz + 20.0f));
 
 	// y is in vertical range.
-	temp_pos.setY(rand() % (int)((world_vert / 4)) + world_vert * (5.5 / 8.0));
+	temp_pos.setY(rand() % (int)((world_vert / 3.0)) + world_vert * (2.0 / 8.0));
 
 	// If collision, move right slightly until empty space.
 	df::ObjectList collision_list = WM.getCollisions(this, temp_pos);

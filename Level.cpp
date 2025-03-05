@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Tower.h"
 #include "Bandit.h"
+#include "Bird.h"
 #include "EventLevelComplete.h"
 
 Level::Level() {
@@ -97,7 +98,8 @@ void Level::begin() {
 	int enemy_cap = 10 + (current_level);
 
 	for (int i = 0; i < enemy_cap; i++) {
-		new Bandit;
+		//new Bandit;
+		new Bird;
 		enemy_count++;
 	}
 

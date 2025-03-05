@@ -163,6 +163,10 @@ void Player::fire(df::Vector target) {
 
 	df::Vector v(cos(angle) * power, sin(angle) * power);
 
+	df::Sound* p_sound = df::ResourceManager::getInstance().getSound("fire");
+	if (p_sound)
+		p_sound->play();
+
 	Projectile* p = new Projectile(getPosition(), aim_time);
 
 	p->setVelocity(v);
