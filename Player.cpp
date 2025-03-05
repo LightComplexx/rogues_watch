@@ -95,6 +95,9 @@ void Player::mse(const df::EventMouse* p_mouse_event) {
 
 		// Set is_aiming state to true
 		is_aiming = true;
+
+		// debug aim time
+		LM.writeLog("Aim Time: %.3f", aim_time);
 	}
 
 	if ((p_mouse_event->getMouseAction() == df::CLICKED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
@@ -108,8 +111,8 @@ int Player::draw() {
 	if (is_aiming) {
 		aim(start, curr);
 
-		if (aim_time < 2) {
-			aim_time += 0.05f;
+		if (aim_time < 0.5f) {
+			aim_time += 0.01f;
 		}
 	}
 
@@ -123,7 +126,7 @@ void Player::step() {
 		fire_countdown = 0;
 	}
 
-	if (!is_aiming && aim_time > 0.0) {
+	if (!is_aiming && aim_time > 0.0f) {
 		fire(p_reticle->getPosition());
 		aim_time = 0;
 	}
@@ -143,10 +146,22 @@ void Player::fire(df::Vector target) {
 	}
 	fire_countdown = fire_slowdown;
 
-	df::Vector v = target - getPosition();
-	v.normalize();
-	v.scale(1.0f * (1.0f + aim_time));
+	//df::Vector v = target - getPosition();
+	//v.normalize();
+	//v.scale(1.0f * (1.0f + aim_time));
+	//Projectile* p = new Projectile(getPosition(), aim_time);
+	//p->setVelocity(v);
+
+
+	float dx = start.getX() - curr.getX();
+	float dy = start.getY() - curr.getY();
+	float power = sqrt(dx * dx + dy * dy) * (1.0f * aim_time); // Scale appropriately
+	float angle = atan2(dy, dx);
+
+	df::Vector v(cos(angle) * power, sin(angle) * power);
+
 	Projectile* p = new Projectile(getPosition(), aim_time);
+
 	p->setVelocity(v);
 }
 
