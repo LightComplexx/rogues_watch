@@ -146,16 +146,19 @@ void Player::fire(df::Vector target) {
 	}
 	fire_countdown = fire_slowdown;
 
+	// og mechanics
+	
 	//df::Vector v = target - getPosition();
 	//v.normalize();
 	//v.scale(1.0f * (1.0f + aim_time));
 	//Projectile* p = new Projectile(getPosition(), aim_time);
 	//p->setVelocity(v);
 
-
+	// modified to work a little closer to bowman
+	// might feel a little weird, adjustments could be made
 	float dx = start.getX() - curr.getX();
 	float dy = start.getY() - curr.getY();
-	float power = sqrt(dx * dx + dy * dy) * (1.0f * aim_time); // Scale appropriately
+	float power = sqrt(dx * dx + dy * dy) * (1.0f * aim_time);
 	float angle = atan2(dy, dx);
 
 	df::Vector v(cos(angle) * power, sin(angle) * power);
