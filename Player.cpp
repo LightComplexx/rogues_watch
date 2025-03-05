@@ -90,11 +90,15 @@ void Player::mse(const df::EventMouse* p_mouse_event) {
 		df::Vector offset(10, -1);
 
 		// Set start and current position
-		start = getPosition() + offset;
+		//start = getPosition() + offset;
 		curr = p_mouse_event->getMousePosition();
 
 		// Set is_aiming state to true
 		is_aiming = true;
+	}
+
+	if ((p_mouse_event->getMouseAction() == df::CLICKED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
+		start = p_mouse_event->getMousePosition();
 	}
 }
 
@@ -108,6 +112,7 @@ int Player::draw() {
 			aim_time += 0.05f;
 		}
 	}
+
 	return 0;
 }
 
