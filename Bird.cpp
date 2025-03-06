@@ -23,8 +23,11 @@ Bird::Bird() {
 
 Bird::~Bird()
 {
-	df::EventView ev("Points", getPoints(), true);
+	df::EventView ev("Points", +getPoints(), true);
 	WM.onEvent(&ev);
+
+	df::EventView ev_enemies("Enemies", -1, true);
+	WM.onEvent(&ev_enemies);
 }
 
 int Bird::eventHandler(const df::Event* p_e)

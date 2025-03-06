@@ -156,6 +156,7 @@
     <ClCompile Include="Bandit.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyCountDisplay.cpp" />
     <ClCompile Include="EventLevelComplete.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameOver.cpp" />
@@ -163,7 +164,10 @@
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="KillPoints.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelCompleteDisplay.cpp" />
+    <ClCompile Include="LevelDisplay.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PointsDisplay.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Reticle.cpp" />
     <ClCompile Include="Tower.cpp" />
@@ -172,13 +176,17 @@
     <ClInclude Include="Bandit.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyCountDisplay.h" />
     <ClInclude Include="EventLevelComplete.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameStart.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="KillPoints.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelCompleteDisplay.h" />
+    <ClInclude Include="LevelDisplay.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PointsDisplay.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Reticle.h" />
     <ClInclude Include="Tower.h" />

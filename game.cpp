@@ -49,6 +49,7 @@ void loadResources() {
     RM.loadSprite("sprites/healthbar-spr.txt", "healthbar");
     RM.loadSprite("sprites/bandit-spr.txt", "bandit");
     RM.loadSprite("sprites/bird-spr.txt", "bird");
+    RM.loadSprite("sprites/completetext-spr.txt", "completetext");
     RM.loadSound("sounds/Bow.wav", "fire");
     RM.loadSound("sounds/EnemyKill.wav", "die");
     RM.loadSound("sounds/NextLevel.wav", "levelup");

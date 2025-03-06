@@ -20,8 +20,11 @@ Bandit::Bandit() {
 
 Bandit::~Bandit()
 {
-	df::EventView ev("Points", getPoints(), true);
-	WM.onEvent(&ev);
+	df::EventView ev_points("Points", +getPoints(), true);
+	WM.onEvent(&ev_points);
+
+	df::EventView ev_enemies("Enemies", -1, true);
+	WM.onEvent(&ev_enemies);
 }
 
 int Bandit::eventHandler(const df::Event* p_e)
