@@ -8,6 +8,9 @@
 #include "LevelDisplay.h"
 
 LevelDisplay::LevelDisplay(int level) {
+	// set type
+	setType("LevelDisplay");
+
 	// Sets points to display at top center of window
 	setLocation(df::TOP_CENTER);
 

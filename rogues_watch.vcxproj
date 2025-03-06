@@ -157,6 +157,7 @@
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyCountDisplay.cpp" />
+    <ClCompile Include="EventGameOver.cpp" />
     <ClCompile Include="EventLevelComplete.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameOver.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyCountDisplay.h" />
+    <ClInclude Include="EventGameOver.h" />
     <ClInclude Include="EventLevelComplete.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameStart.h" />

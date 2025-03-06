@@ -8,6 +8,9 @@
 #include "PointsDisplay.h"
 
 PointsDisplay::PointsDisplay() {
+	// set type
+	setType("PointsDisplay");
+
 	// Sets points to display at top right of window
 	setPosition(df::Vector(WM.getBoundary().getHorizontal() - 10, 1));
 

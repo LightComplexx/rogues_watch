@@ -11,7 +11,10 @@
 
 // Game includes
 #include "GameStart.h"
+#include "Player.h"
+#include "Tower.h"
 #include "Level.h"
+#include "PointsDisplay.h"
 
 GameStart::GameStart() {
 	// Link to "gamestart" sprite
@@ -54,8 +57,17 @@ int GameStart::eventHandler(const df::Event* p_e) {
 
 // Count down to end of "message"
 void GameStart::start() {
+	// Spawn Tower
+	new Tower;
+
+	// Spawn player archer
+	new Player;
+
 	// Spawn Level
 	new Level;
+
+	// Spawn points
+	new PointsDisplay;
 
 	// When game starts, become inactive
 	setActive(false);

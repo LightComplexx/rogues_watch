@@ -20,8 +20,8 @@ Bandit::Bandit() {
 
 Bandit::~Bandit()
 {
-	df::EventView ev_points("Points", +getPoints(), true);
-	WM.onEvent(&ev_points);
+	df::EventView ev("Points", +getPoints(), true);
+	WM.onEvent(&ev);
 
 	df::EventView ev_enemies("Enemies", -1, true);
 	WM.onEvent(&ev_enemies);
@@ -49,9 +49,10 @@ void Bandit::hit(const df::EventCollision* p_collision_event)
 	// All enemies should die on being hit by the projectile, projectile has piercing properties
 	if ((p_collision_event->getObject1()->getType() == "Arrow") ||
 		(p_collision_event->getObject2()->getType() == "Arrow")) {
-		df::Sound* p_sound = df::ResourceManager::getInstance().getSound("die");
+		df::Sound* p_sound = RM.getSound("die");
 		if (p_sound)
 			p_sound->play();
+
 		WM.markForDelete(this);
 	}
 }
@@ -64,7 +65,7 @@ void Bandit::moveToStart() {
 	int world_vert = (int)WM.getBoundary().getVertical();
 
 	// x is off right side of window.
-	temp_pos.setX(world_horiz + rand() % (int)(world_horiz + 10.0f));
+	temp_pos.setX(world_horiz + rand() % (int)(world_horiz));
 
 	// y is in vertical range.
 	temp_pos.setY(rand() % (int)((world_vert / 4)) + world_vert * (5.5 / 8.0));

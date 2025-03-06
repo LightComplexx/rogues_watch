@@ -78,9 +78,10 @@ void Bird::hit(const df::EventCollision* p_collision_event)
 	// All enemies should die on being hit by the projectile, projectile has piercing properties
 	if ((p_collision_event->getObject1()->getType() == "Arrow") ||
 		(p_collision_event->getObject2()->getType() == "Arrow")) {
-		df::Sound* p_sound = df::ResourceManager::getInstance().getSound("die");
+		df::Sound* p_sound = RM.getSound("die");
 		if (p_sound)
 			p_sound->play();
+
 		WM.markForDelete(this);
 	}
 }
@@ -93,7 +94,7 @@ void Bird::moveToStart() {
 	int world_vert = (int)WM.getBoundary().getVertical();
 
 	// x is off right side of window.
-	temp_pos.setX(world_horiz + rand() % (int)(world_horiz + 20.0f));
+	temp_pos.setX(world_horiz + rand() % (int)(world_horiz));
 
 	// y is in vertical range.
 	temp_pos.setY(rand() % (int)((world_vert / 3.0)) + world_vert * (2.0 / 8.0));

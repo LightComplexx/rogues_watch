@@ -12,5 +12,6 @@ private:
 
 public:
     Level();
+    int draw() override;
     int eventHandler(const df::Event* p_e) override;
 };

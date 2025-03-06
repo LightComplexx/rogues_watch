@@ -15,5 +15,6 @@ private:
 
 public:
 	Tower();
+	~Tower();
 	int eventHandler(const df::Event* p_e) override;
 };

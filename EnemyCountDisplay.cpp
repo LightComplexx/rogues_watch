@@ -1,14 +1,20 @@
 // Engine includes
 #include "GameManager.h"
 #include "WorldManager.h"
+#include "ResourceManager.h"
 #include "EventStep.h"
 #include "EventView.h"
+#include "Sound.h"
 
 // Game includes
 #include "EnemyCountDisplay.h"
 #include "LevelCompleteDisplay.h"
+#include "EventGameOver.h"
 
 EnemyCountDisplay::EnemyCountDisplay(int count) {
+	// set type
+	setType("EnemyCountDisplay");
+
 	// Sets points to display at top right of window
 	setPosition(df::Vector(WM.getBoundary().getHorizontal() - 25, 1));
 
@@ -26,6 +32,7 @@ EnemyCountDisplay::EnemyCountDisplay(int count) {
 
 	// set level completed to false
 	level_completed = false;
+	player_died = false;
 }
 
 int EnemyCountDisplay::eventHandler(const df::Event* p_e) {
@@ -39,11 +46,20 @@ int EnemyCountDisplay::eventHandler(const df::Event* p_e) {
 		return 1;
 	}
 
+	if (p_e->getType() == GAME_OVER_EVENT) {
+		player_died = true;
+		return 1;
+	}
+
 	return 0;
 }
 
 void EnemyCountDisplay::step() {
-	if (getValue() <= 0 && !level_completed) {
+	if (getValue() <= 0 && !level_completed && !player_died) {
+		df::Sound* p_sound = RM.getSound("levelup");
+		if (p_sound)
+			p_sound->play();
+
 		level_completed = true;
 		LevelCompleteDisplay* completetext = new LevelCompleteDisplay();
 		completetext->draw();

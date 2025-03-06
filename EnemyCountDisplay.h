@@ -8,6 +8,7 @@ class EnemyCountDisplay : public df::ViewObject {
 private:
     void step(); // step event function
     bool level_completed;
+    bool player_died;
 public:
     EnemyCountDisplay(int count);
     int eventHandler(const df::Event* p_e) override;

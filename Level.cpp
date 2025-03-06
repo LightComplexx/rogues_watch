@@ -35,6 +35,11 @@ Level::Level() {
 	begin();
 }
 
+int Level::draw()
+{
+	return df::Object::draw();
+}
+
 int Level::eventHandler(const df::Event* p_e)
 {
 	// Level complete event
@@ -53,7 +58,7 @@ void Level::nextLevel() {
 	df::ObjectListIterator i(&object_list);
 	for (i.first(); !i.isDone(); i.next()) {
 		df::Object* p_o = i.currentObject();
-		if (p_o->getType() == "Enemy" || p_o->getType() == "Player" || p_o->getType() == "Tower" || p_o->getType() == "ViewObject")
+		if (p_o->getType() == "EnemyCountDisplay" || p_o->getType() == "LevelDisplay")
 			WM.markForDelete(p_o);
 	}
 
@@ -64,18 +69,12 @@ void Level::nextLevel() {
 }
 
 void Level::begin() {
-	// Spawn Tower
-	new Tower;
-
-	// Spawn player archer
-	new Player;
-
 	// Spawn enemies
-	int enemy_cap = 10 + (current_level);
+	int enemy_cap = 1 + (current_level);
 
 	for (int i = 0; i < enemy_cap; i++) {
-		// spawn Bird every 4 enemies if past level 5
-		if ((current_level + 1) > 5 && (current_level % 4 == 0)) {
+		// spawn Bird every 3 enemies if past level 2
+		if (current_level > 1 && (i % 3 == 0)) {
 			new Bird;
 		}
 		else {
@@ -84,9 +83,7 @@ void Level::begin() {
 		enemy_count++;
 	}
 
-
 	// Spawn all displays
 	new EnemyCountDisplay(enemy_count);
-	new LevelDisplay(current_level+1);
-	new PointsDisplay;
+	new LevelDisplay(current_level + 1);
 }

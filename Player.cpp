@@ -95,9 +95,6 @@ void Player::mse(const df::EventMouse* p_mouse_event) {
 
 		// Set is_aiming state to true
 		is_aiming = true;
-
-		// debug aim time
-		LM.writeLog("Aim Time: %.3f", aim_time);
 	}
 
 	if ((p_mouse_event->getMouseAction() == df::CLICKED) && (p_mouse_event->getMouseButton() == df::Mouse::LEFT)) {
@@ -163,7 +160,7 @@ void Player::fire(df::Vector target) {
 
 	df::Vector v(cos(angle) * power, sin(angle) * power);
 
-	df::Sound* p_sound = df::ResourceManager::getInstance().getSound("fire");
+	df::Sound* p_sound = RM.getSound("fire");
 	if (p_sound)
 		p_sound->play();
 

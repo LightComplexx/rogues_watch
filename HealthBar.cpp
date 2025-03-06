@@ -2,12 +2,15 @@
 #include "GameManager.h"
 #include "WorldManager.h"
 #include "DisplayManager.h"
+#include "ResourceManager.h"
 #include "LogManager.h"
 #include "EventStep.h"
+#include "Sound.h"
 
 // Game includes
 #include "HealthBar.h"
 #include "GameOver.h"
+#include "EventGameOver.h"
 
 HealthBar::HealthBar(df::Vector position) {
 	// Sets object to type Timebar
@@ -39,18 +42,7 @@ HealthBar::HealthBar(df::Vector position) {
 }
 
 HealthBar::~HealthBar() {
-	// Destroys Hero and ends game
-	// Create GameOver object
-	new GameOver;
 
-	// Shake screen (severity 20 pixels x&y, duration 10 frames).
-	DM.shake(20, 20, 10);
-
-	// Make a big explosion with particles.
-	df::addParticles(df::SPARKS, getPosition(), 2, df::BLUE);
-	df::addParticles(df::SPARKS, getPosition(), 2, df::YELLOW);
-	df::addParticles(df::SPARKS, getPosition(), 3, df::RED);
-	df::addParticles(df::SPARKS, getPosition(), 3, df::RED);
 }
 
 int HealthBar::eventHandler(const df::Event* p_e)
@@ -67,9 +59,12 @@ int HealthBar::eventHandler(const df::Event* p_e)
 int HealthBar::draw()
 {
 	if (current_hp <= 0) {
-		WM.markForDelete(this);
+		EventGameOver over;
+		WM.onEvent(&over);
 	}
+
 	getAnimation().getSprite()->draw(max_hp - current_hp, getPosition(), 0);
+
 	return 0;
 }
 
