@@ -9,7 +9,7 @@
 Bird::Bird() {
 
 	// Set speed in horizontal direction.
-	setVelocity(df::Vector(-0.3, 0));
+	setVelocity(df::Vector(-0.3, 0.20));
 
 	// Setup sprite
 	setSprite("bird");
@@ -17,8 +17,13 @@ Bird::Bird() {
 	// Move to start location
 	moveToStart();
 
+	setPoints(20);
+
 	direction_countdown = 0;
-	direction_slowdown = 5;
+	direction_slowdown = 20;
+
+	registerInterest(df::STEP_EVENT);
+	registerInterest(df::COLLISION_EVENT);
 }
 
 Bird::~Bird()
@@ -38,6 +43,7 @@ int Bird::eventHandler(const df::Event* p_e)
 		return 1;
 	}
 	if (p_e->getType() == df::STEP_EVENT) {
+		const df::EventStep* p_collision_event = dynamic_cast <df::EventStep const*> (p_e);
 		step();
 		return 1;
 	}
@@ -49,21 +55,8 @@ void Bird::step() {
 
 	direction_countdown++;
 	if (direction_countdown >= direction_slowdown) {
-		if (getVelocity().getY() != 0.0) {
-			setVelocity(df::Vector(-0.3, 0));
-			direction_countdown = 0;
-		}
-		else {
-			float up_or_down = 0;
-			if (rand() % 2 == 0) {
-				float up_or_down = 0.25;
-			}
-			else {
-				float up_or_down = -0.25;
-			}
-			setVelocity(df::Vector(-0.3, up_or_down));
-			direction_countdown = 0;
-		}
+		setVelocity(df::Vector(-0.3f, -getVelocity().getY()));
+		direction_countdown = 0;
 	}
 }
 
