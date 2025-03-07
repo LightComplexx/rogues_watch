@@ -34,7 +34,7 @@ Player::Player() {
 	aim_time = 0;
 
 	// Sets the slowdown and countdown time for firing arrows
-	fire_slowdown = 4;
+	fire_slowdown = 10;
 	fire_countdown = fire_slowdown;
 
 	is_aiming = false;
