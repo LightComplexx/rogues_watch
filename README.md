@@ -1,5 +1,6 @@
 <h1>Team Lightbow - IMGD 3000 Project 3 Final</h1>
 
+![rogues_watch_graphic](https://github.com/user-attachments/assets/bd61f4f6-597d-4db5-a79f-4a04f30a9092)</br>
 <b>Title:</b> Rogue's Watch
 
 <b>Platform:</b> Windows
