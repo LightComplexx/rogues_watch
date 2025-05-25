@@ -76,6 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
@@ -83,6 +84,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\include;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\SFML-3.0\include;C:\Users\cpiet\OneDrive\Documents\Visual Studio 2022\Projects\dragonfly\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\dragonfly\lib;C:\Users\Rodrick\Downloads\GitHub_Repositories\DragonFly_Game\sfml-3.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,7 +117,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-debug.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-debug.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-debug.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib;sfml-network.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-release.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -149,7 +151,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-debug.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-debug.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-debug.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib;sfml-network.lib;Winmm.lib;Ws2_32.lib;libdragonfly-x64-release.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
